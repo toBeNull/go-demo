@@ -4,7 +4,7 @@ set -e
 version=$(date +%m%d.%H%M)
 echo $version
 
-flags+="-X go-hello/main/version.version=${version}"
+flags="-X go-hello/main/version.version=${version}"
 echo $flags
 
 
