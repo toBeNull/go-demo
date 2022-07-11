@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"go-hello/version"
 	"net/http"
 	"time"
@@ -11,16 +10,19 @@ import (
 func main() {
 	startTime := time.Now()
 	appVersion := version.AppVersion()
+	format := "2006.01.02 15:04:05"
 
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		fmt.Println("receive request at: ", time.Now())
-		c.JSON(http.StatusOK, gin.H{
-			"version":     appVersion,
-			"startTime":   startTime,
-			"currentTime": time.Now(),
-		})
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Printf("[%v] receive request... \n", time.Now().Format(format))
+
+		fmt.Fprintln(w, "Welcome to website!")
+		fmt.Fprintln(w, "")
+		fmt.Fprintln(w, "version    : ", appVersion)
+		fmt.Fprintln(w, "startTime  : ", startTime.Format(format))
+		fmt.Fprintln(w, "currentTime: ", time.Now().Format(format))
+		fmt.Fprintln(w, r.URL.Query().Get("name"))
 	})
-	fmt.Println("server is ready to handle request...")
-	r.Run(":8080")
+
+	fmt.Println("server will be ready to handle request...")
+	http.ListenAndServe(":8080", nil)
 }
