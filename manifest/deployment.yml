@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mars-deploy-go-hello
+  labels:
+    app: go-hello
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-hello
+  template:
+    metadata:
+      labels:
+        app: go-hello
+    spec:
+      containers:
+        - name: go-hello
+          image: {{image_url}}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: volces-sr-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mars-deploy-go-hello
+spec:
+  selector:
+    app: go-hello
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
