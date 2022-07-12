@@ -4,6 +4,9 @@ sh build.sh
 docker login --username=bobo1234@2000007798 cr-cn-beijing.volces.com
 docker build -t cr-cn-beijing.volces.com/matthew-demo/go-demo:latest .
 docker push cr-cn-beijing.volces.com/matthew-demo/go-demo:latest
+
+kubectl delete -f manifest/deployment.yml
+kubectl apply -f manifest/deployment.yml
 ```
 
 
