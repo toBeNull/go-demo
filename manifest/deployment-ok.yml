@@ -27,9 +27,9 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: MY_NODE_IP
-                valueFrom:
-                  fieldRef:
-                    fieldPath: spec.hostIP
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.hostIP
             - name: MY_POD_NAME
               valueFrom:
                 fieldRef:
