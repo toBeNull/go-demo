@@ -13,6 +13,7 @@ func main() {
 	startTime := time.Now()
 	appVersion := version.AppVersion()
 	format := "2006.01.02 15:04:05"
+	cstZone := time.FixedZone("CST", 8*3600)
 
 	nodeName, _ := os.LookupEnv("MY_NODE_NAME")
 	nodeIp, _ := os.LookupEnv("MY_NODE_IP")
@@ -27,8 +28,8 @@ func main() {
 		fmt.Fprintln(w, "Welcome to website!")
 		fmt.Fprintln(w, "")
 		fmt.Fprintln(w, "构建时间    : ", appVersion)
-		fmt.Fprintln(w, "启动时间    : ", startTime.Format(format))
-		fmt.Fprintln(w, "当前时间    : ", time.Now().Format(format))
+		fmt.Fprintln(w, "启动时间    : ", startTime.In(cstZone).Format(format))
+		fmt.Fprintln(w, "当前时间    : ", time.Now().In(cstZone).Format(format))
 		fmt.Fprintln(w, "")
 
 		fmt.Fprintln(w, "host name  : ", nodeName)
@@ -47,5 +48,8 @@ func main() {
 
 	fmt.Println("server will be ready to handle request...")
 	fmt.Println("listen on: ", addr)
-	http.ListenAndServe(addr, nil)
+	err := http.ListenAndServe(addr, nil)
+	if err != nil {
+		panic(err)
+	}
 }
