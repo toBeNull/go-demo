@@ -18,7 +18,7 @@ spec:
       initContainers:
         - name: init-app
           image: busybox:1.28
-          command: [ 'sh', '-c', 'echo The app is running! && sleep 60' ]
+          command: [ 'sh', '-c', 'echo The app is running! && sleep 120' ]
       containers:
         - name: go-hello
           image: {{image_url}}
