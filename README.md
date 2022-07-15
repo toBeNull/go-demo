@@ -10,6 +10,7 @@ kubectl delete -f manifest/deployment-orig.yml
 kubectl apply -f manifest/deployment-orig.yml
 ```
 
+
 ## Online
 
 ```shell
