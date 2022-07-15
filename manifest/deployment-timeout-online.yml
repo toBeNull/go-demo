@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mars-deploy-go-hello
+  name: mars-deploy-go-hello-timeout
   namespace: mars-deploy-online
   labels:
     app: go-hello
@@ -59,7 +59,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mars-deploy-go-hello
+  name: mars-deploy-go-hello-timeout
   namespace: mars-deploy-online
 spec:
   selector:
