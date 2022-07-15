@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mars-deploy-go-hello
-  namespace: mars-deploy-boe
+  namespace: mars-deploy-online
   labels:
     app: go-hello
 spec:
@@ -53,6 +53,8 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+      imagePullSecrets:
+        - name: volces-sr-secret
 
 ---
 
@@ -60,7 +62,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mars-deploy-go-hello
-  namespace: mars-deploy-boe
+  namespace: mars-deploy-online
 spec:
   selector:
     app: go-hello

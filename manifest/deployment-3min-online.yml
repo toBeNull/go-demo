@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mars-deploy-go-hello
-  namespace: mars-deploy-boe
+  namespace: mars-deploy-ok
   labels:
     app: go-hello
 spec:
@@ -15,6 +15,10 @@ spec:
       labels:
         app: go-hello
     spec:
+      initContainers:
+        - name: init-app
+          image: busybox:1.28
+          command: [ 'sh', '-c', 'echo The app is running! && sleep 60' ]
       containers:
         - name: go-hello
           image: {{image_url}}
@@ -53,6 +57,8 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+      imagePullSecrets:
+        - name: volces-sr-secret
 
 ---
 
@@ -60,7 +66,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mars-deploy-go-hello
-  namespace: mars-deploy-boe
+  namespace: mars-deploy-ok
 spec:
   selector:
     app: go-hello

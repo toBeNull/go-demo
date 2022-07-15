@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mars-deploy-go-hello
-  namespace: mars-deploy-ok
+  namespace: mars-deploy-boe
   labels:
     app: go-hello
 spec:
@@ -18,7 +18,7 @@ spec:
       initContainers:
         - name: init-app
           image: busybox:1.28
-          command: [ 'sh', '-c', 'echo The app is running! && sleep 120' ]
+          command: [ 'sh', '-c', 'echo The app is running! && sleep 60' ]
       containers:
         - name: go-hello
           image: {{image_url}}
@@ -66,7 +66,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mars-deploy-go-hello
-  namespace: mars-deploy-ok
+  namespace: mars-deploy-boe
 spec:
   selector:
     app: go-hello
