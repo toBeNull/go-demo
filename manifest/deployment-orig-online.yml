@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: go-hello
-          image: cr-cn-beijing.volces.com/matthew-demo/go-demo:latest
+          image: cr-cn-beijing.volces.com/mars-online/go-demo:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
