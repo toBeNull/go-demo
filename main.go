@@ -25,7 +25,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("[%v] receive request... \n", time.Now().Format(format))
 
-		fmt.Fprintln(w, "Welcome to website!")
+		fmt.Fprintln(w, "Welcome to website! ")
 		fmt.Fprintln(w, "")
 		fmt.Fprintln(w, "构建时间    : ", appVersion)
 		fmt.Fprintln(w, "启动时间    : ", startTime.In(cstZone).Format(format))
