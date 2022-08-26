@@ -25,7 +25,7 @@ kubectl apply -f manifest/deployment-orig-online.yml
 ```
 
 
-local:
+## local:
 ```shell
 docker run --name go-hello \
 -p 8080:8080 \
