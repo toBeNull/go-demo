@@ -13,5 +13,3 @@ go mod download && go mod verify
 GOOS=linux go build -ldflags "$flags" -o output/go-hello main.go
 
 
-
-
