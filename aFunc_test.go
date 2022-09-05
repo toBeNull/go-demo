@@ -1,11 +1,11 @@
 package main
 
 import (
-"testing"
+	"testing"
 )
 
-func TestHisFunc(t *testing.T) {
-	if !myFunc() {
+func TestAFunc(t *testing.T) {
+	if !aFunc() {
 		t.Errorf("expected true, but got false")
 	} else {
 		print("PASS1\n")
@@ -13,8 +13,8 @@ func TestHisFunc(t *testing.T) {
 
 }
 
-func TestHisFunc2(t *testing.T) {
-	if myFunc() {
+func TestAFunc2(t *testing.T) {
+	if aFunc() {
 		t.Errorf("expected true, but got false")
 	} else {
 		print("PASS2\n")
