@@ -1,6 +1,5 @@
 package main
 
-
-func hisFunc() bool {
+func aFunc() bool {
 	return true
 }
