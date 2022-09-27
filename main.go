@@ -1,6 +1,5 @@
 package main
 
-
 import (
 	"fmt"
 	"go-hello/version"
@@ -53,4 +52,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 }
