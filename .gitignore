@@ -89,3 +89,8 @@ fabric.properties
 # vendor/
 
 /output/
+
+
+## customize
+
+report.jsonl
