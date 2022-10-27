@@ -14,7 +14,7 @@ func TestAFunc(t *testing.T) {
 }
 
 func TestAFunc2(t *testing.T) {
-	if aFunc() {
+	if !aFunc() {
 		t.Errorf("expected true, but got false")
 	} else {
 		print("PASS2\n")
